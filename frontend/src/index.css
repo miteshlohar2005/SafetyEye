@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --animate-pulse-ring: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  --animate-scan: scan 3s linear infinite;
+}
+
+@layer base {
+  :root {
+    /* Light Theme Colors */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --accent-primary: #3b82f6; /* Blue */
+    --accent-secondary: #60a5fa;
+    --border-color: #e2e8f0;
+    
+    /* Status Colors */
+    --status-success: #10b981;
+    --status-warning: #f59e0b;
+    --status-error: #ef4444;
+    
+    /* Dashboard specific */
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    
+    --bg-mesh: transparent;
+  }
+
+  .dark {
+    /* Dark Theme Colors */
+    --bg-primary: #0B1220; /* Rich dark navy */
+    --bg-secondary: #111827; /* Slightly lighter navy for contrast */
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-primary: #3b82f6;
+    --accent-secondary: #8b5cf6;
+    --border-color: #1e293b;
+    
+    /* Status Colors */
+    --status-success: #10b981;
+    --status-warning: #f59e0b;
+    --status-error: #ef4444;
+    
+    /* Dashboard specific */
+    --sidebar-bg: rgba(15, 23, 42, 0.7);
+    --card-bg: rgba(17, 24, 39, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    /* Cyber/Mesh background in dark mode */
+    --bg-mesh: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+               linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+
+  body {
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased transition-colors duration-500 ease-in-out;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .mesh-bg {
+    background-image: var(--bg-mesh);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-position: center, -1px -1px, -1px -1px;
+  }
+}
+
+/* Animations */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
