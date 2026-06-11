@@ -1,5 +1,11 @@
-flask
-opencv-python
+streamlit
+opencv-python-headless
 ultralytics
 numpy
 streamlit-option-menu
+streamlit-lottie
+pandas
+plotly
+requests
+Pillow
+face-recognition

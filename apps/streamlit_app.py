@@ -11,9 +11,13 @@ import threading
 from datetime import datetime
 import time
 import threading
-import winsound
 from datetime import datetime
 import pandas as pd
+try:
+    import winsound
+except ImportError:
+    pass
+
 try:
     import plotly.express as px
 except ImportError:
